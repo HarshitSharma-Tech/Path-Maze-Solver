@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function closePopup() {
     popup.classList.add('hidden');
-  }
+  } 
 
   // Initialize maze on page load
   generateEmptyMaze();
