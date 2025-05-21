@@ -1,35 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rat in a Maze</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Maze Builder</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
-    <div id="controls" style="padding:10px">
-        <input type="number" name="" id="rows" placeholder="Enter rows" value="4">
-        <input type="number" name="" id="cols" placeholder="Enter columns" value="4">
-        <button onclick="genGrid()">Generate Grid</button>
-        <button onclick="solve()">Solve Maze</button>
+  <div class="wrapper">
+    <div class="maze-panel">
+      <h1>Maze Designer</h1>
+      <p class="tagline">Create your custom maze adventure!</p>
+      
+      <div class="settings">
+        <div class="setting-group">
+          <label for="rows">Rows:</label>
+          <input type="number" id="rows" min="3" max="20" value="8">
+        </div>
+        <div class="setting-group">
+          <label for="cols">Columns:</label>
+          <input type="number" id="cols" min="3" max="20" value="8">
+        </div>
+        <div class="setting-group">
+          <label for="obstacle-emoji">Obstacle:</label>
+          <select id="obstacle-emoji">
+            <option value="💀">💀 Skull</option>
+            <option value="🧱">🧱 Brick</option>
+            <option value="🌵">🌵 Cactus</option>
+            <option value="🪨">🪨 Rock</option>
+            <option value="🔥">🔥 Fire</option>
+          </select>
+        </div>
+      </div>
+      
+      <div class="controls">
+        <button id="generate-btn">Create Grid</button>
+        <button id="path-btn">Try My Path</button>
+        <button id="run-btn">Run Maze</button>
+        <button id="clear-btn">Clear Path</button>
+      </div>
+      
+      <div id="maze" class="maze-grid"></div>
     </div>
-    
+  </div>
 
-    <div id="canvas-div">
-        <canvas id="canvas" width="500px" height="500px"></canvas>
+  <div id="popup" class="popup hidden">
+    <div class="popup-content">
+      Thank you! I went home🐀🐀
+      <br />
+      <button id="close-popup">Close</button>
     </div>
-   
-    <div style="padding:10px">
-        <p>
-            <b>How to Play?<br></b>
-            Left Click on Grid cell to add a blocker<br>
-            First Spacebar Click - Select the Start Point<br>
-            Second Spacebar Click - Select the End Point<br>
-        </p>
-    </div>
+  </div>
 
+  <audio id="nomSound" src="https://www.fesliyanstudios.com/play-mp3/4387"></audio>
+  <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
